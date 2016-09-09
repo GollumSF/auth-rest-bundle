@@ -1,0 +1,15 @@
+parameters:
+    gsf_auth_rest.usermanager_class: GollumSF\RestBundle\Manager\UserManager
+    gsf_auth_rest.entity_user_class: GollumSF\RestBundle\Entity\User
+
+services:
+  
+    ##########
+    # Events #
+    ##########
+    
+    gsf_auth_rest.user_manager:
+        class: "%gsf_auth_rest.usermanager_class%"
+        calls:
+            - [setEntityManager, ['@doctrine.orm.entity_manager']]
+            - [setEntityClass  , ['%gsf_auth_rest.entity_user_class%']]

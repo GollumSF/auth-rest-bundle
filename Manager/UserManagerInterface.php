@@ -22,5 +22,5 @@ interface UserManagerInterface {
 	/**
 	 * @return UserInterface
 	 */
-	public function findOneEnabledByEmail();
+	public function findOneEnabledByEmail($email);
 }

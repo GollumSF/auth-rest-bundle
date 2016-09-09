@@ -1,7 +1,7 @@
 <?php
 namespace GollumSF\AuthRestBundle\Manager;
 
-use EntityManager57c618951aebb_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use GollumSF\AuthRestBundle\Entity\Repository\UserRepository;
 use GollumSF\AuthRestBundle\Entity\UserInterface;
 
@@ -26,7 +26,7 @@ trait UserManagerTrait {
 		$this->entityClass = $entityClass;
 	}
 	
-	public function setEntityManager(EntityManager $em) {
+	public function setEntityManager(EntityManagerInterface $em) {
 		$this->em = $em;
 	}
 	
@@ -38,7 +38,7 @@ trait UserManagerTrait {
 	}
 	
 	/**
-	 * @return EntityManager
+	 * @return EntityManagerInterface
 	 */
 	public function getEntityManager() {
 		return $this->em;

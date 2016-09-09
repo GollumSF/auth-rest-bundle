@@ -7,6 +7,7 @@ use GollumSF\AuthRestBundle\Manager\UserManager;
 use GollumSF\CoreBundle\Controller\CoreAbstractController;
 use GollumSF\RestBundle\Annotation\Rest;
 use GollumSF\RestBundle\Response\RestResponse;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Form\FormError;
@@ -32,6 +33,7 @@ class AuthController extends CoreAbstractController {
 	
 	/**
 	 * @Route("/login")
+	 * @Method({"GET", "POST"})
 	 * @Rest
 	 */
 	public function loginAction(Request $request) {
@@ -58,6 +60,7 @@ class AuthController extends CoreAbstractController {
 	
 	/**
 	 * @Route("/register")
+	 * @Method({"GET", "POST"})
 	 * @Rest
 	 */
 	public function registerAction(Request $request) {
@@ -80,6 +83,7 @@ class AuthController extends CoreAbstractController {
 	
 	/**
 	 * @Route("/reset-password")
+	 * @Method({"GET", "POST"})
 	 * @Rest
 	 */
 	public function resetPasswordAction(Request $request) {
