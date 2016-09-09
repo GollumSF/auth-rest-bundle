@@ -3,6 +3,7 @@ namespace GollumSF\AuthRestBundle\Controller;
 
 use GollumSF\AuthRestBundle\Form\LoginType;
 use GollumSF\AuthRestBundle\Form\RegisterType;
+use GollumSF\AuthRestBundle\Form\ResetPasswordType;
 use GollumSF\AuthRestBundle\Manager\UserManager;
 use GollumSF\CoreBundle\Controller\CoreAbstractController;
 use GollumSF\RestBundle\Annotation\Rest;
@@ -28,7 +29,7 @@ class AuthController extends CoreAbstractController {
 	
 	public function setContainer(ContainerInterface $container = null) {
 		parent::setContainer($container);
-		$this->userManager = $this->get('gsf_auth.user_manager');
+		$this->userManager = $this->get('gsf_auth_rest.user_manager');
 	}
 	
 	/**
@@ -65,7 +66,7 @@ class AuthController extends CoreAbstractController {
 	 */
 	public function registerAction(Request $request) {
 		$user = $this->userManager->createUser();
-		$form = $this->createForm(new RegisterType(), $user);
+		$form = $this->createForm(RegisterType::class, $user);
 		
 		if ($request->isMethod('POST')) {
 			$form->handleRequest($request);
@@ -88,7 +89,7 @@ class AuthController extends CoreAbstractController {
 	 */
 	public function resetPasswordAction(Request $request) {
 		$user = $this->userManager->createUser();
-		$form = $this->createForm(new RegisterType(), $user);
+		$form = $this->createForm(ResetPasswordType::class, $user);
 		
 		if ($request->isMethod('POST')) {
 			$form->handleRequest($request);
